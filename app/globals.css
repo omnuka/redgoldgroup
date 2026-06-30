@@ -1,0 +1,38 @@
+:root {
+  --bg: #f8f4ee;
+  --card: #ffffff;
+  --text: #2c1b12;
+  --muted: #7a6a60;
+  --accent: #b3261e;
+  --accent-dark: #7f1711;
+  --border: #eadfd4;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: Arial, Helvetica, sans-serif; }
+a { color: var(--accent); }
+.dashboard { max-width: 1400px; margin: 0 auto; padding: 32px; }
+.header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; margin-bottom: 24px; }
+.header h1 { margin: 0 0 8px; font-size: 34px; }
+.header p { margin: 0; color: var(--muted); }
+.badge { background: #ffe8df; color: var(--accent-dark); border: 1px solid #ffd0c2; padding: 8px 12px; border-radius: 999px; font-weight: 700; }
+.tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+.tab { border: 1px solid var(--border); background: var(--card); color: var(--muted); padding: 10px 16px; border-radius: 12px; font-weight: 700; cursor: default; }
+.tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.placeholder, .card, .chart-card, .table-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 10px 30px rgba(44, 27, 18, 0.06); }
+.placeholder { padding: 32px; color: var(--muted); }
+.section-title { margin: 30px 0 14px; font-size: 24px; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.card { padding: 18px; }
+.card span { display: block; color: var(--muted); font-size: 14px; margin-bottom: 10px; }
+.card strong { font-size: 26px; }
+.charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.chart-card { padding: 18px; min-height: 340px; }
+.chart-card h3, .table-card h3 { margin: 0 0 16px; }
+.table-card { padding: 18px; margin-bottom: 18px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 760px; }
+th, td { text-align: left; padding: 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { color: var(--muted); font-size: 13px; background: #fffaf5; }
+.small-table { min-width: 420px; }
+.status { display: inline-block; padding: 5px 9px; border-radius: 999px; background: #fff0c2; color: #7a5200; font-weight: 700; font-size: 12px; }
+@media (max-width: 900px) { .dashboard { padding: 20px; } .header { display: block; } .cards, .charts { grid-template-columns: 1fr; } }
