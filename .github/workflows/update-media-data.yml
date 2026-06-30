@@ -1,0 +1,38 @@
+name: update-media-data
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-media-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update media data
+        run: npm run fetch:media
+
+      - name: Commit media data changes
+        run: |
+          if git diff --quiet -- data/media_dashboard.json; then
+            echo "No media data changes to commit"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/media_dashboard.json
+          git commit -m "Update media dashboard data"
+          git push
